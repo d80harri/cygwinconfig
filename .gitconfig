@@ -1,0 +1,47 @@
+[user]
+	name = Harald Bittermann (HBI)
+	email = harald.bittermann@ntsretail.com
+[push]
+	default = upstream
+[core]
+	excludesfile = C:\\Users\\hbi\\Documents\\gitignore_global.txt
+	trustctime = false
+	editor = vim
+	filemode = false
+[color]
+	ui = true
+
+[diff]
+    tool = meld
+	guitool = meld
+[merge]
+    tool = meld
+	guitool = meld
+
+[difftool "kdiff3"]
+    path = /c/Program Files/KDiff3/kdiff3.exe 
+    trustExitCode = false
+[mergetool "kdiff3"]
+    path = /c/Program Files/KDiff3/kdiff3.exe
+    keepBackup = false
+    trustExitCode = false
+
+[difftool "meld"]
+    cmd = \"/cygdrive/c/Program Files (x86)/Meld/Meld.exe\" \"$(cygpath -wla $LOCAL)\" \"$(cygpath -wla $REMOTE)\"
+    trustExitCode = false
+[mergetool "meld"]
+    cmd = \"/cygdrive/c/Program Files (x86)/Meld/Meld.exe\" \"$(cygpath -wla $BASE)\" \"$(cygpath -wla $LOCAL)\" \"$(cygpath -wla $REMOTE)\" -o \"$(cygpath -wla $MERGED)\"
+    keepBackup = false
+    trustExitCode = false
+
+[alias]
+	last = log -1 --stat
+	cp = cherry-pick
+	co = checkout
+	cl = clone
+	ci = commit
+	st = status -sb
+	br = branch
+	unstage = reset HEAD --
+	dc = diff --cached
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
