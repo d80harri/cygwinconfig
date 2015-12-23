@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias rsnapshot="rsnapshot -c ~/.rsnapshot.conf"
 alias rmGeminiDb="rm -f /cygdrive/c/Users/hbi/db_gemini.*"
+alias t2tmud="telnet t2tmud.org 9999"
 
 RPS1='%{$fg[yellow]%}%~%{$reset_color%}\
 %{$fg[blue]%}$(task context:in +PENDING count)|\
