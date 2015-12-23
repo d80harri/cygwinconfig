@@ -5,3 +5,5 @@ repo
 .geeknote
 *~
 .oh-my-zsh
+*_history
+.zsh_history
