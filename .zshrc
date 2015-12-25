@@ -91,7 +91,7 @@ RPS1='%{$fg[yellow]%}%~%{$reset_color%}\
 %{$fg[blue]%}$(task context:in +PENDING count)|\
 %{$fg[green]%}$(task prio: +PENDING count)|\
 %{$fg[red]%}$(task +OVERDUE +PENDING count)/\
-$(task due.after:1w  +PENDING count)|\
+$(task due.before:1w  +PENDING count)|\
 %{$fg[red]%}${return_code}%{$reset_color%} '
 
 

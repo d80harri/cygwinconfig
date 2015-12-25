@@ -1,3 +1,16 @@
+let mapleader = ","
+set wrap
+set linebreak
+
+" Enable block cursor in normal mode
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+
+" Enable spellcheck
+" set spell
+set spelllang=de_at
 
 "NeoBundle Scripts-----------------------------
 if has('vim_starting')
@@ -32,6 +45,8 @@ NeoBundle 'AshyIsMe/2048'
 NeoBundle 'vimoutliner/vimoutliner'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'jtratner/vim-flavored-markdown'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'vimwiki/vimwiki'
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
