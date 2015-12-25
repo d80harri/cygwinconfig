@@ -87,11 +87,17 @@ alias rsnapshot="rsnapshot -c ~/.rsnapshot.conf"
 alias rmGeminiDb="rm -f /cygdrive/c/Users/hbi/db_gemini.*"
 alias t2tmud="telnet t2tmud.org 9999"
 
-RPS1='%{$fg[yellow]%}%~%{$reset_color%}\
-%{$fg[blue]%}$(task context:in +PENDING count)|\
-%{$fg[green]%}$(task prio: +PENDING count)|\
-%{$fg[red]%}$(task +OVERDUE +PENDING count)/\
-$(task due.before:1w  +PENDING count)|\
+precmd() {
+  PRIO="$bg[green] prio: $(task prio: +PENDING count) "
+  IN="$bg[blue] in: $(task context:in +PENDING count) "
+  DUE="$bg[red] due: $(task +OVERDUE +PENDING count)/$(task due.before:1w  +PENDING count) "
+
+  LINE="$IN$PRIO$DUE$reset_color"
+
+  print $fg[black]${(l:$COLUMNS+20:::)LINE}
+}
+
+RPS1='%{$fg[yellow]%}%~%{$reset_color%} \
 %{$fg[red]%}${return_code}%{$reset_color%} '
 
 
