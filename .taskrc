@@ -35,6 +35,10 @@ taskd.certificate=\/home\/hbi\/.task\/freecinc_f9d0a414.cert.pem
 taskd.ca=\/home\/hbi\/.task\/freecinc_f9d0a414.ca.pem
 taskd.credentials=FreeCinc\/freecinc_f9d0a414\/71f098b6-d5e3-4f96-a8b9-6590bd6b841e
 
+print.empty.columns=yes
+confirmation=no
+bulk=0
+
 uda.context.label=Context
 uda.context.type=string
 uda.context.values=home,work,errand,online,in
@@ -44,5 +48,8 @@ color.uda.context.in=black on white
 report.next.columns=id,start.age,entry.age,depends,priority,context,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description,urgency
 report.next.labels=ID,Active,Age,Deps,P,@,Project,Tag,Recur,S,Due,Until,Description,Urg
 
-
-
+report.noproj.columns=id,start.age,entry.age,depends,priority,context,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description,urgency
+report.noproj.description=All tasks that do not have a project defined
+report.noproj.filter=status.not:deleted status.not:completed proj:
+report.noproj.labels=ID,Active,Age,Deps,P,@,Project,Tag,Recur,S,Due,Until,Description,Urg
+report.noproj.sort=urgency-
