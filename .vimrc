@@ -42,11 +42,10 @@ NeoBundle 'farseer90718/vim-taskwarrior'
 NeoBundle 'neilagabriel/vim-geeknote'
 NeoBundle 'mkitt/tabline.vim'
 NeoBundle 'AshyIsMe/2048'
-NeoBundle 'vimoutliner/vimoutliner'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'jtratner/vim-flavored-markdown'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'vimwiki/vimwiki'
+NeoBundle 'DirDiff.vim'
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }

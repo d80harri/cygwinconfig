@@ -36,6 +36,9 @@
     keepBackup = false
     trustExitCode = false
 
+[difftool "vim"]
+	cmd = vim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' $LOCAL $REMOTE '+syntax off'
+
 [alias]
 	last = log -1 --stat
 	cp = cherry-pick
