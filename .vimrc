@@ -46,6 +46,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'vimwiki/vimwiki'
 NeoBundle 'DirDiff.vim'
+NeoBundle 'majutsushi/tagbar'
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
@@ -67,3 +68,9 @@ let g:task_rc_override = 'rc.defaultwidth=0'
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+
+let g:vimwiki_list = [{
+\'auto_toc':'1'
+\}]
+
+let g:vimwiki_folding="syntax"
