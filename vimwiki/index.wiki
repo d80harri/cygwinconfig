@@ -1,6 +1,7 @@
 = Contents =
         - [[#Howto|Howto]]
                 - [[#Howto#Diary|Diary]]
+        - [[#Seiten|Seiten]]
 
 = Howto =
 == Diary ==
@@ -11,4 +12,6 @@ a new note for today with a name based on the current date.
 To generate the diary section with all available links one can use
 |:VimwikiDiaryGenerateLinks| or <Leader>w<Leader>i .
 
-
+= Seiten =
+* [[private/index.wiki|Private]]
+* [[nts/index.wiki|NTS]]

@@ -88,13 +88,14 @@ alias rmGeminiDb="rm -f /cygdrive/c/Users/hbi/db_gemini.*"
 alias t2tmud="telnet t2tmud.org 9999"
 
 precmd() {
-  PRIO="$bg[green] prio: $(task prio: +PENDING count) "
-  IN="$bg[blue] in: $(task context:in +PENDING count) "
-  DUE="$bg[red] due: $(task +OVERDUE +PENDING count)/$(task due.before:1w  +PENDING count) "
+  CTX="$bg[white] $(task _get rc.context) > "
+  PRIO="$bg[green] prio: $(task prio: +PENDING -BLOCKED count) "
+  IN="$bg[blue] in: $(task context:in +PENDING -BLOCKED count) "
+  DUE="$bg[red] due: $(task +OVERDUE +PENDING -BLOCKED count)/$(task due.before:1w  +PENDING -BLOCKED count) "
 
-  LINE="$IN$PRIO$DUE$reset_color"
+  LINE="$CTX$IN$PRIO$DUE$reset_color"
 
-  print $fg[black]${(l:$COLUMNS+20:::)LINE}
+  print $fg[black]${(l:$COLUMNS+24:::)LINE}
 }
 
 RPS1='%{$fg[yellow]%}%~%{$reset_color%} \
