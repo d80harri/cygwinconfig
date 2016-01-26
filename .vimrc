@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 let mapleader = ","
 set wrap
 set linebreak
@@ -12,67 +14,24 @@ let &t_te.="\e[0 q"
 " set spell
 set spelllang=de_at
 
-"NeoBundle Scripts-----------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=/home/hbi/.vim/bundle/neobundle.vim/
-endif
-
-" Required:
-call neobundle#begin(expand('/home/hbi/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" Add or remove your Bundles here:
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-
-NeoBundle 'bling/vim-airline'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'farseer90718/vim-taskwarrior'
-NeoBundle 'neilagabriel/vim-geeknote'
-NeoBundle 'mkitt/tabline.vim'
-NeoBundle 'AshyIsMe/2048'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'vimwiki/vimwiki'
-NeoBundle 'DirDiff.vim'
-NeoBundle 'majutsushi/tagbar'
-
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
-" Required:
-call neobundle#end()
-
 " Required:
 filetype plugin indent on
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
-
 let g:task_rc_override = 'rc.defaultwidth=0'
 
+let wiki_1 = {}
+let wiki_1.path = '~/links/winhome/owncloud/wiki'
+"let wiki_1.index = 'main'
+let wiki_1.auto_toc = 1
 
-hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
-hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
-hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
-
-let g:vimwiki_list = [
-\	{
-\		'auto_toc':'1'
-\	}
-\]
+let g:vimwiki_list = [wiki_1]
 
 let g:vimwiki_folding="syntax"
+
+autocmd BufNewFile,BufRead *.wiki inoremap <F5> <C-R>=strftime("*%H:%M Uhr*: ")<CR>
+autocmd BufNewFile,BufRead *.wiki nnoremap <F5> "=strftime("*%H:%M Uhr*: ")<CR>P
+
+if &diff
+	colorscheme evening
+endif
+

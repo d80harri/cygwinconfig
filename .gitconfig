@@ -32,7 +32,7 @@
     cmd = \"/cygdrive/c/Program Files (x86)/Meld/Meld.exe\" \"$(cygpath -wla $LOCAL)\" \"$(cygpath -wla $REMOTE)\"
     trustExitCode = false
 [mergetool "meld"]
-    cmd = \"/cygdrive/c/Program Files (x86)/Meld/Meld.exe\" \"$(cygpath -wla $BASE)\" \"$(cygpath -wla $LOCAL)\" \"$(cygpath -wla $REMOTE)\" -o \"$(cygpath -wla $MERGED)\"
+    cmd = \"/cygdrive/c/Program Files (x86)/Meld/Meld.exe\" --diff \"$(cygpath -wla $BASE)\" \"$(cygpath -wla $LOCAL)\" \"$(cygpath -wla $REMOTE)\" --output \"$(cygpath -wla $MERGED)\"
     keepBackup = false
     trustExitCode = false
 

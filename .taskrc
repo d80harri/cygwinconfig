@@ -41,12 +41,18 @@ bulk=0
 
 uda.context.label=Context
 uda.context.type=string
-uda.context.values=home,work,errand,online,in
+uda.context.values=home,work,work.review,errand,online,in
 uda.context.default=in
 color.uda.context.in=black on white
 
 report.next.columns=id,start.age,entry.age,depends,priority,context,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description,urgency
 report.next.labels=ID,Active,Age,Deps,P,@,Project,Tag,Recur,S,Due,Until,Description,Urg
+
+report.print.description=Print report for next actions
+report.print.columns=id,project,description
+report.print.labels=ID,Project,Description
+report.print.sort=context+/,urgency-
+report.print.filter=status:pending limit:100
 
 report.noproj.columns=id,start.age,entry.age,depends,priority,context,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description,urgency
 report.noproj.description=All tasks that do not have a project defined
@@ -59,5 +65,11 @@ report.noprio.description=All tasks that do not have a project defined
 report.noprio.filter=prio: +PENDING -BLOCKED
 report.noprio.labels=ID,Active,Age,Deps,P,@,Project,Tag,Recur,S,Due,Until,Description,Urg
 report.noproj.sort=urgency-
+
 context.noprio=prio: +PENDING -BLOCKED
-context.home=context:home
+context.home=(context:home or context:in or context:errand)
+context.work=((context:work and context.not:work. or context:in) and -BLOCKED)
+context.errand=(context:errand or context:in)
+urgency.user.project.nts.sprint.active.coefficient=10
+color.blocked=underline grey10 on grey3
+context=home

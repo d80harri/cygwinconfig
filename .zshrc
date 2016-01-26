@@ -49,7 +49,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git taskwarrior)
 
 # User configuration
 
@@ -88,16 +88,19 @@ alias rmGeminiDb="rm -f /cygdrive/c/Users/hbi/db_gemini.*"
 alias t2tmud="telnet t2tmud.org 9999"
 
 precmd() {
-  CTX="$bg[white] $(task _get rc.context) > "
-  PRIO="$bg[green] prio: $(task prio: +PENDING -BLOCKED count) "
-  IN="$bg[blue] in: $(task context:in +PENDING -BLOCKED count) "
-  DUE="$bg[red] due: $(task +OVERDUE +PENDING -BLOCKED count)/$(task due.before:1w  +PENDING -BLOCKED count) "
+	TCTX=$(task _get rc.context)
 
-  LINE="$CTX$IN$PRIO$DUE$reset_color"
+	CTX="$bg[white] $TCTX > "
+	PRIO="$bg[green] prio: $(task prio: +PENDING -BLOCKED context.not:in count) "
+	IN="$bg[blue] in: $(task context:in +PENDING -BLOCKED count) "
+	DUE="$bg[red] due: $(task +OVERDUE +PENDING -BLOCKED count)/$(task due.before:1w  +PENDING -BLOCKED count) "
 
-  print $fg[black]${(l:$COLUMNS+24:::)LINE}
+	LINE="$CTX$IN$PRIO$DUE$reset_color"
+
+	print $fg[black]${(l:$COLUMNS+24:::)LINE}
 }
 
+PS1="\$(date +%d.%H:%M:%S)$PS1"
 RPS1='%{$fg[yellow]%}%~%{$reset_color%} \
 %{$fg[red]%}${return_code}%{$reset_color%} '
 
@@ -106,3 +109,26 @@ RPS1='%{$fg[yellow]%}%~%{$reset_color%} \
 #zstyle ':completion:*' accept-exact '*(N)'
 #zstyle ':completion:*' use-cache on
 #zstyle ':completion:*' cache-path ~/.zsh/cache
+
+DEFAULT_PRINTER=nts.nearest
+
+alias t.print="task print > ~/deleteme.txt && lpr -P $DEFAULT_PRINTER ~/deleteme.txt"
+alias t.print.home='task print > ~/deleteme.txt && lpr -P home ~/deleteme.txt'
+alias t.print.evernote='task print > ~/todo.txt && mv ~/todo.txt ~/links/winhome/Desktop/Evernote/Inbox'
+
+alias g.diff.head="git difftool -t vim -d ^head"
+alias g.h2.delete="rm ~/links/winhome/db_gemini.*"
+alias g.product.test="mvn clean test-compile surefire-report:report  -Daggregate=true -fn"
+alias g.it.test="~/bin/gem/it.test.sh"
+alias g.failsafe.failures='grep -RilL **/failsafe-summary.xml -e ".*<failures>0</failures>.*"'
+alias g.failsafe.errors='grep -RilL **/failsafe-summary.xml -e ".*<errors>0</errors>.*"'
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle :compinstall filename '/home/hbi/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
