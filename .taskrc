@@ -29,11 +29,11 @@ data.location=~/.task
 #include /usr/share/doc/task/rc/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
-taskd.server=freecinc.com:53589
-taskd.key=\/home\/hbi\/.task\/freecinc_f9d0a414.key.pem
-taskd.certificate=\/home\/hbi\/.task\/freecinc_f9d0a414.cert.pem
-taskd.ca=\/home\/hbi\/.task\/freecinc_f9d0a414.ca.pem
-taskd.credentials=FreeCinc\/freecinc_f9d0a414\/71f098b6-d5e3-4f96-a8b9-6590bd6b841e
+taskd.server=d80harri.no-ip.org:53589
+taskd.key=\/home\/hbi\/.task\/hbi.key.pem
+taskd.certificate=\/home\/hbi\/.task\/hbi.cert.pem
+taskd.ca=\/home\/hbi\/.task\/ca.cert.pem
+taskd.credentials=Public\/Harald Bittermann\/e36f3b8a-6548-4a67-8e40-ca1920b57188
 
 print.empty.columns=yes
 confirmation=no
@@ -72,4 +72,5 @@ context.work=((context:work and context.not:work. or context:in) and -BLOCKED)
 context.errand=(context:errand or context:in)
 urgency.user.project.nts.sprint.active.coefficient=10
 color.blocked=underline grey10 on grey3
-context=home
+debug.tls=2
+taskd.trust=ignore hostname
